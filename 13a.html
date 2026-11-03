@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>BlossomGifts</title></head>
+<body>
+  <h2>BlossomGifts - Gift Collection</h2>
+  <button onclick="loadGifts()">View Gifts</button>
+  <div id="gifts"></div>
+  <script>
+    function loadGifts() {
+      let x = new XMLHttpRequest();
+      x.onload = function() {
+        if (x.status == 200) {
+          let items = JSON.parse(x.responseText);
+          let output = "";
+          items.forEach(function(item) {
+            output += "<p>" + item.name + " - ₹" + item.price + "</p>";
+          });
+          document.getElementById("gifts").innerHTML = output;
+        } else {
+          document.getElementById("gifts").textContent = "Could not load gifts.";
+        }
+      };
+      x.open("GET", "gifts.json", true);
+      x.send();
+    }
+  </script>
+</body>
+</html>

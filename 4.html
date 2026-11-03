@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Train Reservation</title>
+<style>
+body {
+    font-family: Arial;
+    background: lightyellow;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 150px 200px;
+    gap: 10px;
+}
+input {
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+<h1>Train Reservation</h1>
+<h2>Available Trains</h2>
+<table border="1">
+<tr><th>Train</th><th>Route</th></tr>
+<tr><td>Chennai Express</td><td>Chennai - Bangalore</td></tr>
+<tr><td>Pandian Express</td><td>Chennai - Madurai</td></tr>
+</table>
+<h2>Book Ticket</h2>
+<form onsubmit="book(event)">
+<div class="grid">
+<label>Passenger Name:</label>
+<input id="name" required>
+<label>Number of Tickets:</label>
+<input id="qty" type="number" min="1" required>
+</div><br>
+<button type="submit">Reserve Ticket</button>
+</form>
+<p id="result"></p>
+<script>
+function book(e) {
+e.preventDefault();
+let n = document.getElementById("name").value;
+let q = Number(document.getElementById("qty").value);
+document.getElementById("result").innerHTML =
+"Ticket Reserved for " + n +
+"<br>Total Fare: Rs. " + (q * 300);
+}
+</script>
+</body>
+</html>

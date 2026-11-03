@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MedCare Appointment</title>
+</head>
+<body>
+  <h2>MedCare - Book an Appointment</h2>
+  <form id="bookingForm">
+    Patient name: <input id="name" required><br><br>
+    Email: <input id="email" required><br><br>
+    Phone: <input id="phone" required><br><br>
+    Doctor:
+    <select id="doctor">
+      <option>General Physician</option>
+      <option>Dentist</option>
+      <option>Dermatologist</option>
+      <option>Cardiologist</option>
+    </select><br><br>
+    Date: <input type="date" id="date" required><br><br>
+    <button type="submit">Book Appointment</button>
+  </form>
+  <p id="result"></p>
+  <script>
+    document.getElementById("bookingForm").onsubmit = function(e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let namePattern = /^[A-Za-z ]{2,}$/;
+      let emailPattern = /^[^ ]+@[^ ]+\.[A-Za-z]{2,}$/;
+      let phonePattern = /^[0-9]{10}$/;
+ 
+      if (!namePattern.test(name)) {
+        result.textContent = "Enter a valid name."; return;
+      }
+      if (!emailPattern.test(email)) {
+        result.textContent = "Enter a valid email."; return;
+      }
+      if (!phonePattern.test(phone)) {
+        result.textContent = "Enter a 10-digit phone number."; return;
+      }
+      result.textContent = "Appointment booked with " +
+        document.getElementById("doctor").value + " on " +
+        document.getElementById("date").value + ".";
+    };
+  </script>
+</body>
+</html>

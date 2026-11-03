@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flight Booking</title>
+<style>
+body {
+    font-family: Arial;
+    background: lightcyan;
+}
+.flights {
+    display: flex;
+    gap: 15px;
+}
+.card {
+    background: white;
+    padding: 15px;
+    border: 1px solid black;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 120px 180px;
+    gap: 10px;
+}
+</style>
+</head>
+<body>
+<h1>Flight Reservation</h1>
+<div class="flights">
+<div class="card">Chennai - Delhi<br>Rs. 3000</div>
+<div class="card">Chennai - Mumbai<br>Rs. 2500</div>
+</div>
+<h2>Book Flight</h2>
+<form onsubmit="book(event)">
+<div class="grid">
+<label>Name:</label>
+<input id="name" required>
+<label>Destination:</label>
+<select id="place">
+<option value="3000">Delhi</option>
+<option value="2500">Mumbai</option>
+</select>
+<label>Tickets:</label>
+<input id="qty" type="number" min="1" required>
+</div><br>
+<button type="submit">Book Flight</button>
+</form>
+<p id="result"></p>
+<script>
+function book(e) {
+e.preventDefault();
+let n = document.getElementById("name").value;
+let p = Number(document.getElementById("place").value);
+let q = Number(document.getElementById("qty").value);
+document.getElementById("result").innerHTML =
+"Flight booked for " + n +
+"<br>Total Fare: Rs. " + (p * q);
+}
+</script>
+</body>
+</html>

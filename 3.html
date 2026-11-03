@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bus Booking</title>
+</head>
+<body>
+<h1>Bus Ticket Booking</h1>
+
+<table border="1">
+<tr><th>Bus</th><th>Route</th><th>Fare</th></tr>
+<tr><td>Express</td><td>Chennai to Madurai</td><td>500</td></tr>
+<tr><td>Royal Bus</td><td>Chennai to Salem</td><td>400</td></tr>
+</table>
+
+<h2>Book Ticket</h2>
+Name: <input id="name"><br><br>
+Tickets: <input id="qty" type="number" min="1"><br><br>
+<button onclick="book()">Book Ticket</button>
+<p id="result"></p>
+
+<script>
+function book() {
+let n = document.getElementById("name").value;
+let q = Number(document.getElementById("qty").value);
+if (n == "" || q < 1) {
+alert("Enter valid details");
+return;
+}
+document.getElementById("result").innerHTML =
+"Ticket booked for " + n +
+"<br>Total Fare: Rs. " + (q * 500);
+}
+</script>
+</body>
+</html>

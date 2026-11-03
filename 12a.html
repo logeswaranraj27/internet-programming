@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>InsureEasy</title></head>
+<body>
+  <h2>InsureEasy - Insurance Policies</h2>
+  <button onclick="loadPolicies()">View Policies</button>
+  <div id="result"></div>
+  <script>
+    function loadPolicies() {
+      let x = new XMLHttpRequest();
+      x.onload = function() {
+        if (x.status == 200) {
+          let policies = JSON.parse(x.responseText);
+          let output = "";
+          policies.forEach(function(p) {
+            output += "<p>" + p.name + " - Premium: ₹" + p.premium + "</p>";
+          });
+          document.getElementById("result").innerHTML = output;
+        } else {
+          document.getElementById("result").textContent = "Could not load policies.";
+        }
+      };
+      x.open("GET", "policies.json", true);
+      x.send();
+    }
+  </script>
+</body>
+</html>

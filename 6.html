@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cake Ordering</title>
+<style>
+body {
+    font-family: Arial;
+    background: lightpink;
+    text-align: center;
+}
+h1 {
+    animation: move 2s infinite alternate;
+}
+@keyframes move {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+</style>
+</head>
+<body>
+<h1>Online Cake Ordering</h1>
+<h2>Available Cakes</h2>
+<p>Chocolate Cake - Rs. 500</p>
+<p>Vanilla Cake - Rs. 400</p>
+<form onsubmit="order(event)">
+Name: <input id="name" required><br><br>
+Cake:
+<select id="cake">
+<option value="500">Chocolate Cake</option>
+<option value="400">Vanilla Cake</option>
+</select><br><br>
+Quantity:
+<input id="qty" type="number" min="1" required><br><br>
+<button type="submit">Order Cake</button>
+</form>
+<p id="result"></p>
+<script>
+function order(e) {
+e.preventDefault();
+let n = document.getElementById("name").value;
+let c = Number(document.getElementById("cake").value);
+let q = Number(document.getElementById("qty").value);
+document.getElementById("result").textContent =
+"Order placed for " + n +
+". Total Price: Rs. " + (c * q);
+}
+</script>
+</body>
+</html>

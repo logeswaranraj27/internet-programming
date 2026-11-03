@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Management</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<h2>Search Book</h2>
+<input id="book" placeholder="Enter book name">
+<button onclick="searchBook()">Search</button>
+<p id="result"></p>
+<h2>Calculate Fine</h2>
+<input id="days" type="number" placeholder="Late days">
+<button onclick="fine()">Calculate Fine</button>
+<p id="fineResult"></p>
+<script>
+function searchBook() {
+let b = document.getElementById("book").value.toLowerCase();
+let books = ["java", "python", "computer networks"];
+if (books.includes(b))
+document.getElementById("result").innerHTML = "Book Available";
+else
+document.getElementById("result").innerHTML = "Book Not Found";
+}
+function fine() {
+let d = Number(document.getElementById("days").value);
+document.getElementById("fineResult").innerHTML =
+"Fine: Rs. " + (d * 5);
+}
+</script>
+</body>
+</html>

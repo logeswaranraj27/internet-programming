@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>TechSavvy Shop</title></head>
+<body>
+  <h2>TechSavvy Electronics</h2>
+  <div id="products"></div>
+  <h3>Shopping Cart</h3>
+  <ul id="cart"></ul>
+  <p id="total">Total: ₹0</p>
+ 
+  <script>
+    let products = [
+      {"name":"Headphones","price":999},
+      {"name":"Keyboard","price":799},
+      {"name":"Mouse","price":499}
+    ];
+    let cart = [];
+    let total = 0;
+ 
+    function showProducts() {
+      products.forEach(function(p, i) {
+        productsDiv.innerHTML += p.name + " - ₹" + p.price +
+          ' <button onclick="addItem(' + i + ')">Add</button><br><br>';
+      });
+    }
+    function addItem(i) {
+      cart.push(products[i]);
+      total += products[i].price;
+      document.getElementById("cart").innerHTML +=
+        "<li>" + products[i].name + " - ₹" + products[i].price + "</li>";
+      document.getElementById("total").textContent = "Total: ₹" + total;
+    }
+    let productsDiv = document.getElementById("products");
+    showProducts();
+  </script>
+</body>
+</html>

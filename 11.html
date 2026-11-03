@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Home Finder</title></head>
+<body>
+  <h2>Home Finder - Search Properties</h2>
+  <input id="location" placeholder="Enter location">
+  <button onclick="searchHomes()">Search</button>
+  <div id="results"></div>
+ 
+  <script>
+    let homes = [
+      {"name":"Green Villa","location":"Chennai","price":4500000},
+      {"name":"City Apartment","location":"Coimbatore","price":3200000},
+      {"name":"Lake House","location":"Chennai","price":5500000}
+    ];
+ 
+    function searchHomes() {
+      let place = document.getElementById("location").value.toLowerCase();
+      let output = "";
+      homes.forEach(function(home) {
+        if (home.location.toLowerCase().includes(place)) {
+          output += "<p>" + home.name + " - " + home.location +
+            " - ₹" + home.price + "</p>";
+        }
+      });
+      document.getElementById("results").innerHTML =
+        output || "No properties found.";
+    }
+  </script>
+</body>
+</html>

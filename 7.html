@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Beauty Parlour</title>
+<style>
+body {
+    font-family: Arial;
+    background: lavenderblush;
+    text-align: center;
+}
+h1 {
+    animation: colorchange 2s infinite alternate;
+}
+@keyframes colorchange {
+    from { color: purple; }
+    to { color: deeppink; }
+}
+</style>
+</head>
+<body>
+<h1>Beauty Parlour Booking</h1>
+<h2>Book an Appointment</h2>
+<form onsubmit="book(event)">
+Name: <input id="name" required maxlength="40"><br><br>
+Service:
+<select id="service">
+<option>Haircut</option>
+<option>Facial</option>
+<option>Hair Styling</option>
+</select><br><br>
+Date: <input id="date" type="date" required><br><br>
+<button type="submit">Book Appointment</button>
+</form>
+<p id="result"></p>
+<script>
+function book(e) {
+e.preventDefault();
+let n = document.getElementById("name").value.trim();
+let d = document.getElementById("date").value;
+let s = document.getElementById("service").value;
+if (n == "" || d == "") {
+alert("Enter valid details");
+return;
+}
+if (d < new Date().toLocaleDateString("en-CA")) {
+alert("Select a valid date");
+return;
+}
+document.getElementById("result").textContent =
+"Appointment confirmed for " + n +
+" - " + s + " on " + d;
+}
+</script>
+</body>
+</html>

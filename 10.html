@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><title>StyleHub Fashion</title></head>
+<body>
+  <h2>StyleHub Fashion Store</h2>
+  <div id="items"></div>
+  <h3>Your Cart</h3>
+  <ul id="cart"></ul>
+  <h3 id="total">Total: ₹0</h3>
+ 
+  <script>
+    let clothes = [
+      {name:"T-Shirt", price:499},
+      {name:"Jeans", price:999},
+      {name:"Sneakers", price:1499}
+    ];
+    let total = 0;
+ 
+    clothes.forEach(function(item) {
+      let p = document.createElement("p");
+      p.textContent = item.name + " - ₹" + item.price + " ";
+      let btn = document.createElement("button");
+      btn.textContent = "Add to Cart";
+      btn.onclick = function() {
+        let li = document.createElement("li");
+        li.textContent = item.name + " - ₹" + item.price;
+        document.getElementById("cart").appendChild(li);
+        total += item.price;
+        document.getElementById("total").textContent = "Total: ₹" + total;
+      };
+      p.appendChild(btn);
+      document.getElementById("items").appendChild(p);
+    });
+  </script>
+</body>
+</html>

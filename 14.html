@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>ReNewMarket</title></head>
+<body>
+  <h2>ReNewMarket - Used Items</h2>
+  <div id="items"></div>
+  <script>
+    let items = [
+      {"name":"Used Bicycle","price":2500},
+      {"name":"Study Table","price":1800},
+      {"name":"Headphones","price":500}
+    ];
+ 
+    function showItems() {
+      let output = "";
+      items.forEach(function(item, index) {
+        output += item.name + " - ₹" + item.price +
+          ' <button onclick="removeItem(' + index + ')">Remove</button><br><br>';
+      });
+      document.getElementById("items").innerHTML = output || "No items available.";
+    }
+ 
+    function removeItem(index) {
+      items.splice(index, 1);
+      showItems();
+    }
+    showItems();
+  </script>
+</body>
+</html>
